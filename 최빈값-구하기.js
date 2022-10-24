@@ -1,15 +1,16 @@
 function solution(array) {
-    let most = array.reduce((total, now) => {
-        total[now] = (total[now] || 0) + 1;
-        return total;
-}, {});
+	const maxNum = array.reduce((acc, cur) => {
+		acc[cur] = (acc[cur] || 0 ) + 1;
+		return acc; 
+	}, {})
+    const objConvert = Object.entries(maxNum);
+    const countValue = Object.values(maxNum);
     
-    const keys = Object.keys(most);
-    let mode = keys[0];
-    keys.forEach((value, index) => {
-        if (most[value] > most[mode]) {
-            mode = value;
-        }
-    });
-    return parseInt(mode);
+    countValue.sort((a,b) => b - a);
+    
+    if (countValue[0] === countValue[1]) return -1;
+    
+    for(const el of objConvert) {
+        if (el[1] === countValue[0]) return parseInt(el[0])     
+    }
 }
