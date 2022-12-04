@@ -11,7 +11,6 @@ function solution(sizes) {
         
         height.push(sizes[i][1]);
         height.sort((a, b) => a - b);
-        
     }
     return width.pop() * height.pop()
 }
